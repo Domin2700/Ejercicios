@@ -15,6 +15,17 @@ function App() {
            (neutral + puntajeNeutral) +
            (bad * puntajeMalo) / all) 
   }
+
+  const statistics = {
+    'good': good,
+    'neutral': neutral,
+    'bad': bad,
+    'all': all,
+    'average': isNaN(promedio())? 0: promedio(),
+    'positive': isNaN(positive)? 0 : positive
+  }
+
+  
   return (
     <>
       <h1>give feedback</h1>
@@ -23,13 +34,24 @@ function App() {
         <button onClick={() => {setNeutral(neutral+1)}}>neutral</button>
         <button onClick={() => {setBad(bad+1)}}>bad</button>
       </div>
-      <h1>statistics</h1>
-      <p>good: {good}</p>
-      <p>neutral: {neutral}</p>
-      <p>bad: {bad}</p>
-      <p>all: {all}</p>
-      <p>average:{isNaN(promedio())? 0: promedio() }</p>
-      <p>positive: {positive} %</p>
+      <Statistics datos = {statistics} />
+      
+    </>
+  )
+}
+
+const Statistics = (props) => {
+  console.log(props)
+  return(
+    <>
+    <h1>statistics</h1>
+      <p>good: {props.datos.good}</p>
+      <p>neutral: {props.datos.neutral}</p>
+      <p>bad: {props.datos.bad}</p>
+      <p>all: {props.datos.all}</p>
+      <p>average: {props.datos.average}</p>
+      <p>positive: {props.datos.positive} %</p>
+    
     </>
   )
 }
