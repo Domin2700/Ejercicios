@@ -22,7 +22,7 @@ function App() {
     'bad': bad,
     'all': all,
     'average': isNaN(promedio())? 0: promedio(),
-    'positive': isNaN(positive)? 0 : positive
+    'positive': isNaN(positive)? 0 : positive 
   }
 
   
@@ -55,7 +55,7 @@ const Statistics = (props) => {
          <StatisticLine text ="bad" value ={props.datos.bad} />     
          <StatisticLine text ="all" value ={props.datos.all} />     
          <StatisticLine text ="average" value ={props.datos.average} />     
-         <StatisticLine text ="positive" value ={props.datos.positive} />     
+         <StatisticLine text ="positive" value ={props.datos.positive + ' %'} />    
      </table> 
     
     </>
