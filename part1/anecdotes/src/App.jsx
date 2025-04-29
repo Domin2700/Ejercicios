@@ -13,19 +13,35 @@ const anecdotes =[
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.',
     'The only way to go fast, is to go well.'
 ]
-const [selected,setSelected] = useState(0)
+
+const [selected,setSelected,] = useState(0)
+const [votes, setVotes] = useState(new Array(anecdotes.length).fill(0))
+
 const randonAnecdote = () => {
   let randomNumber = Math.floor(Math.random() * anecdotes.length)
      setSelected(randomNumber)
      console.log(randomNumber)
-}     
+     
+}   
 
+const toVote = () => {
+console.log('vote',votes) 
+console.log('Indicete',selected) 
+const  copy = [...votes]
+
+copy[selected] += 1
+console.log('Copia', copy)
+setVotes(copy)
+console.log('vote',votes[selected])
+}    
   return (
     <>
       <div>
-        {anecdotes[selected]}
+        {anecdotes[selected]} 
+        <p>has: {votes[selected]} vote </p>
       </div>
       <button onClick={randonAnecdote}>next anecdote</button>
+      <button onClick={toVote}>vote</button>
     </>
   )
 }
