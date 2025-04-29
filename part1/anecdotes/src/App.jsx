@@ -16,7 +16,8 @@ const anecdotes =[
 
 const [selected,setSelected,] = useState(0)
 const [votes, setVotes] = useState(new Array(anecdotes.length).fill(0))
-
+const maxVote = Math.max(...votes)
+const indexMax = votes.indexOf(maxVote)
 const randonAnecdote = () => {
   let randomNumber = Math.floor(Math.random() * anecdotes.length)
      setSelected(randomNumber)
@@ -37,11 +38,20 @@ console.log('vote',votes[selected])
   return (
     <>
       <div>
+        <h1>Anecdote of the day</h1>
         {anecdotes[selected]} 
-        <p>has: {votes[selected]} vote </p>
+        <p>has: {votes[selected]} votes </p>
       </div>
+
       <button onClick={randonAnecdote}>next anecdote</button>
       <button onClick={toVote}>vote</button>
+
+      <div>
+      <h1>Anecdote with the most votes</h1>
+        {anecdotes[indexMax]} 
+       <p>has: {maxVote} votes</p>
+      </div>
+     
     </>
   )
 }
