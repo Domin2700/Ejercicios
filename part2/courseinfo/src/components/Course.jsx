@@ -1,9 +1,8 @@
 const Course = (course) => {
-    console.log(course)
     return(
         <>
     <div>
-    <Header course= {course.courseApp.name} />  
+    <Header course= {course.courseApp} />  
     <Content parts = {course.courseApp.parts}/>
      <Total parts = {course.courseApp.parts}/>
     </div>
@@ -17,24 +16,20 @@ const Course = (course) => {
 
 
 const Header = (props) => {
-    console.log('Header', props.course.course)
     return (
       <>
-      <h1>{props.course.couser}</h1>
+      <h1>{props.course.name}</h1>
       </>
     )
   }
   
   const Content = (props) => {
+    console.log('Content',props)
     return (
       <>
-      <Part1 part1 = {props.parts[0].name} exercises1 = {props.parts[0].exercises1} />
-      <Part2 part2 = {props.parts[1].name} exercises2 = {props.parts[1].exercises2} />
-      <Part3 part3 = {props.parts[2].name} exercises3 = {props.parts[2].exercises2} />
-       
-        <p>
-          {props.parts[2].name} {props.parts[2].exercises3}
-        </p> 
+
+      {props.parts.map( parts =>  <Parts key = {parts.id} parts = {parts}/> ) }
+
       </>
     )
   }
@@ -42,41 +37,20 @@ const Header = (props) => {
   const Total = (props) => {
     return (
       <>
-      <p>number of exercises {props.parts[0].exercises1 +
-       props.parts[1].exercises2 +
-        props.parts[2].exercises3}</p>
+      <p>total of {props.parts.reduce((sum, eje)=> sum + eje.exercises,0 )} exercises </p>
       </>
     )
   }
   
-  const Part1 = (props) => {
+
+
+const Parts = (parts) => {
+console.log('Parts', parts)
     return(
-      <>
-          <p>
-          {props.part1} {props.exercises1}
-        </p>
-      </>
+        <>
+        <p>{parts.parts.name} {parts.parts.exercises}</p>
+        </>
     )
-  }
-  
-  const Part2 = (props) => {
-    return (
-      <>
-        <p>
-          {props.part2} {props.exercises2}
-        </p>
-      </>
-    )
-  }
-  
-  const Part3 = (props) => {
-    return (
-      <>
-        <p>
-          {props.part3} {props.exercises3}
-        </p>
-      </>
-    )
-  }
+}
 
   export default Course

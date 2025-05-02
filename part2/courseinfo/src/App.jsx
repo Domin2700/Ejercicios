@@ -6,15 +6,23 @@ name: 'Half Stack application development',
  parts: [
 {
   name: 'Fundamentals of React',
-  exercises1:10
+  exercises:10,
+  id: 1
 },
 {
   name:'Using props to pass data',
-  exercises2: 7
+  exercises: 7,
+  id: 2
 },
 {
   name:'State of a component',
-  exercises3: 14
+  exercises: 14,
+  id: 3
+},
+{
+  name:'Hello wordl',
+  exercises: 17,
+  id: 4
 }
 
 ]}
