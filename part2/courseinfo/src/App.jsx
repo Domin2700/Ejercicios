@@ -1,8 +1,11 @@
 import Course from "./components/Course"
 
 function App() {
-const course = {
+const course = [
+  
+{
 name: 'Half Stack application development',
+id: 1,
  parts: [
 {
   name: 'Fundamentals of React',
@@ -23,9 +26,25 @@ name: 'Half Stack application development',
   name:'Hello wordl',
   exercises: 17,
   id: 4
-}
+}]
+},
+{ name: 'Node.js',
+  id:2,
+  parts:[
+  {
+    name: 'Routing',
+    exercises: 3,
+    id: 1
+  },
+  {
+    name: 'Middlewares',
+    exercises: 7,
+    id: 2 
+  }
+  ]}
 
-]}
+]
+
   return <Course courseApp = {course}/>
 }
 
